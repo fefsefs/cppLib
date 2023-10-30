@@ -3,7 +3,7 @@
 
 template <class T, class U>
 class generalFuncs{
-	public:
+	protected:
  	virtual const U getData(void);
 	virtual U setData(T dataStruct); 
 	virtual void map(std::function <U(U)> func, T dataStruc);
@@ -13,17 +13,30 @@ class generalFuncs{
 namespace pDStructures{ 
 	// Class that defines each linked list node (use individualy to build an linked list) 
 	template <class U> 
-	class linkedListNode : public generalFuncs {
-		private:
+	class linkedListNode{
+	private:
 		U data;
 		linkedListNode *next;
-		public:
-		linkedListNode(U construcData, linkedListNode &construcNext = NULL);
-		U getData(void) const override;
-		void setData(const U &nData) override;
-		int map(std::function<U(U)> func, linkedListNode &head) override;
-
-	       	void linkTail(linkedListNode &toLink);	
+	public: 
+		linkedListNode();
+		~linkedListNode();
+	};
+	
+	class linkedList : public generalFuncs  {
+	private:
+		linkedListNode *head;	
+	public: 
+		linkedList(U construcData, linkedListNode &construcNext = NULL); 	
+                U getData(void) const override;
+                void setData(const U &nData) override;
+                int map(std::function<U(U)> func, linkedListNode &head) override;
+                                                                                     
+                void pushFront(linkedListNode &toLink);	
+		void popFront(linkedListNode &toLink);
+		void pushBack(linkedListNode &toLink);
+		void popBack(linkedListNode &toLink);
+                                                                                     
+                ~linkedList();		
 	};
 }	
 
