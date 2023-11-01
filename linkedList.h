@@ -25,7 +25,7 @@ namespace pDStructures{
 		linkedListNode *next;
 		// DONE
 		//private constructor to isolate to just inheritance
-		linkedListNode(U constructData, linkedListNode &constructNext = nullptr);
+		linkedListNode(U constructData, linkedListNode *constructNext = nullptr);
 	public: 
 		friend class linkedList<U>;
 	};

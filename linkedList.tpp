@@ -2,12 +2,12 @@
 
 // DONE
 template <class U>
-pDStructures::linkedListNode<U>::linkedListNode(U constructData, pDStructures::linkedListNode<U> &constructNext) : data(constructData), next(constructNext) {}
+pDStructures::linkedListNode<U>::linkedListNode(U constructData, pDStructures::linkedListNode<U> *constructNext) : data(constructData), next(constructNext) {}
 
 // DONE
 template <class U>
 pDStructures::linkedList<U>::linkedList(U constructData, pDStructures::linkedListNode<U> &constructNext) {
-	this->head = linkedListNode(constructData);
+	this->head = pDStructures::linkedListNode<U>(constructData, constructNext);
 }
 // DONE
 template <class U>
@@ -15,7 +15,7 @@ void pDStructures::linkedList<U>::recurDestructorLinkedList(pDStructures::linked
 	using namespace pDStructures;
 
 	if(headRecDest.next != nullptr){
-		linkedList<U>::recurDestructorLinkedList(headRecDest.next);
+		linkedList<U>::recurDestructorLinkedList((*headRecDest.next));
 	}	
 	delete headRecDest.next;
 }
