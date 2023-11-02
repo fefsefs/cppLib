@@ -6,7 +6,7 @@ pDStructures::linkedListNode<U>::linkedListNode(U constructData, pDStructures::l
 
 // DONE
 template <class U>
-pDStructures::linkedList<U>::linkedList(U constructData, pDStructures::linkedListNode<U> &constructNext) {
+pDStructures::linkedList<U>::linkedList(U constructData, pDStructures::linkedListNode<U> *constructNext) {
 	this->head = pDStructures::linkedListNode<U>(constructData, constructNext);
 }
 // DONE
