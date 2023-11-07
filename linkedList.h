@@ -28,21 +28,22 @@ namespace pDStructures{
 	public: 
 		friend class linkedList<U>;
 	};
-	
+	//Monoid	
 	template <class U>
 	class linkedList{// : public generalFuncs<U>  {
 	protected:
-		static linkedListNode<U> head;	
+		linkedListNode<U> head;	
 	public: 
+		static linkedListNode<U> headSt;	
 		// DONE
 		// U -> LLNode -> LL
 		linkedList(U constructData, linkedListNode<U> *constructNext = nullptr); 	
 		// DONE
 		// uInt -> U (you ignor the other two args)
-                U getData(const uINT &pos, const linkedListNode<U> &Node = head, uINT acc = 0) const;
+                U getData(const uINT &pos, const linkedListNode<U> &Node = headSt, uINT acc = 0) const;
 		// DONE
 		// uInt -> U -> void
-                void setData(const uINT &pos, const U &nData, const linkedListNode<U> &Node = head, uINT acc = 0);
+                void setData(const uINT &pos, const U &nData, const linkedListNode<U> &Node = headSt, uINT acc = 0);
 		// DONE
 		// (U -> U) -> LLNode -> int
                 int map(std::function<U(U)> func, linkedListNode<U> &headMap);
@@ -57,7 +58,7 @@ namespace pDStructures{
 		void recurDestructorLinkedList(linkedListNode<U> & headRecDest);
 		// DONE
                 ~linkedList();		
-	};
+	};	
 }	
 
 #include "linkedList.tpp"
